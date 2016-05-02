@@ -1,0 +1,31 @@
+<div class="jumbotron">
+	<div class="container">
+		<h1>Users</h1>
+		<p>List</p>
+		<p>
+      <%= link_to "Create User", new_user_path, class: "btn btn-primary btn-lg" %>
+		</p>
+	</div>
+</div>
+
+<div class="container">
+
+  <% flash.each do |name, msg| %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+
+      </div>
+  <% end %>
+
+  <% @users.each do |user| %>
+      <div class="well well-sm">
+        <h3><%= user.first_name + ' ' + user.last_name %></h3>
+        <h4>Articles: <%= user.articles.length %> </h4>
+        <%= link_to "View", user_path(user), class: "btn btn-primary btn-xs" %>
+        <%= link_to "Edit", edit_user_path(user), class: "btn btn-warning btn-xs" %>
+        <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-xs" %>
+      </div>
+  <% end %>
+
+</div>

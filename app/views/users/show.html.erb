@@ -1,0 +1,55 @@
+<div class="jumbotron">
+	<div class="container">
+		<h1><%= @user.first_name + ' ' + @user.last_name %></h1>
+    <p>&nbsp;</p>
+    <p>
+      <%= link_to "Back", root_path, class: "btn btn-primary btn-lg" %>
+    </p>
+	</div>
+</div>
+
+<div class="container">
+
+  <h2>Articles</h2>
+
+  <% flash.each do |name, msg| %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+
+      </div>
+  <% end %>
+
+  <%= link_to "Create Article", new_article_path, class: "btn btn-primary btn-md" %>
+
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Date Created</th>
+      <th>Action</th>
+    </thead>
+
+    <tbody>
+
+    <% @user.articles.each do |article| %>
+
+    <tr>
+      <td><%= article.id %></td>
+      <td><%= article.description %></td>
+      <td><%= article.created_at %></td>
+      <td>
+        <%= link_to "View", article_path(article), class: "btn btn-primary btn-xs" %>
+        <%= link_to "Edit", edit_article_path(article), class: "btn btn-warning btn-xs" %>
+        <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-xs" %>
+
+      </td>
+    </tr>
+
+    <% end %>
+
+    </tbody>
+
+  </table>
+
+</div>

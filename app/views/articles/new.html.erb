@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Create New Article</h1>
+    <p>Fill up the form to create a new article</p>
+    <p>
+      <%= link_to "Back", "../users/#{session[:current_user_id]}", class: "btn btn-primary btn-lg" %>
+    </p>
+  </div>
+
+  <div class="container">
+    <%= render partial: 'articles/article_form' %>
+  </div>
+
+</div>
